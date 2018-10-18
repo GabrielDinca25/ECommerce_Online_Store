@@ -1,0 +1,21 @@
+﻿.navbutton {
+    font-family: Francois One;
+    font-size: 20px;
+}
+
+.navbar {
+    border: 0;
+}
+
+.navbrand {
+    font-family: Playball;
+    font-size: 26px;
+}
+
+.container {
+    margin-left: 10px;
+}
+
+.navbar-nav{
+    margin-right: -15px;
+}

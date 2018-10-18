@@ -1,0 +1,11 @@
+E:\Workspace\E_Commerce_Online_Store\OnlineStore\OnlineStore\bin\Debug\netcoreapp2.0\OnlineStore.deps.json
+E:\Workspace\E_Commerce_Online_Store\OnlineStore\OnlineStore\bin\Debug\netcoreapp2.0\OnlineStore.runtimeconfig.json
+E:\Workspace\E_Commerce_Online_Store\OnlineStore\OnlineStore\bin\Debug\netcoreapp2.0\OnlineStore.runtimeconfig.dev.json
+E:\Workspace\E_Commerce_Online_Store\OnlineStore\OnlineStore\bin\Debug\netcoreapp2.0\OnlineStore.dll
+E:\Workspace\E_Commerce_Online_Store\OnlineStore\OnlineStore\bin\Debug\netcoreapp2.0\OnlineStore.pdb
+E:\Workspace\E_Commerce_Online_Store\OnlineStore\OnlineStore\obj\Debug\netcoreapp2.0\OnlineStore.csprojAssemblyReference.cache
+E:\Workspace\E_Commerce_Online_Store\OnlineStore\OnlineStore\obj\Debug\netcoreapp2.0\OnlineStore.csproj.CoreCompileInputs.cache
+E:\Workspace\E_Commerce_Online_Store\OnlineStore\OnlineStore\obj\Debug\netcoreapp2.0\OnlineStore.AssemblyInfoInputs.cache
+E:\Workspace\E_Commerce_Online_Store\OnlineStore\OnlineStore\obj\Debug\netcoreapp2.0\OnlineStore.AssemblyInfo.cs
+E:\Workspace\E_Commerce_Online_Store\OnlineStore\OnlineStore\obj\Debug\netcoreapp2.0\OnlineStore.dll
+E:\Workspace\E_Commerce_Online_Store\OnlineStore\OnlineStore\obj\Debug\netcoreapp2.0\OnlineStore.pdb
