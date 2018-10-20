@@ -46,7 +46,8 @@
                     <li><a class="navbutton" style="color: #05386b" asp-area="" asp-controller="Home" asp-action="About">Women</a></li>
                     <li><a class="navbutton" style="color: #05386b" asp-area="" asp-controller="Home" asp-action="Contact">Other accessories</a></li>
                     <li><a onclick="document.getElementById('id01').style.display='block'" class="navbutton" style="color: #05386b; margin-left: 370px;">Login </a></li>
-                    <li><a class="navbutton" style="color: #05386b" asp-area="" asp-controller="Home" asp-action="Contact">Register</a></li>
+                    <li><a onclick="document.getElementById('id02').style.display='block'" class="navbutton" style="color: #05386b;">Register </a></li>
+                    @*<li><a class="navbutton" style="color: #05386b" asp-area="" asp-controller="Home" asp-action="Contact">Register</a></li>*@
                 </ul>
             </div>
             <div class="navbar-collapse collapse" style="float: right">
@@ -62,25 +63,69 @@
         <form class="modal-content animate" style=" background-color: #5cdb95;" action="/action_page.php">
             <div class="imgcontainer">
                 <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                <img src="img_avatar2.png" alt="Avatar" class="avatar">
+                <img src="~/images/avatar.png" alt="Avatar" class="avatar">
             </div>
 
-            <div class="container">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" placeholder="Enter Username" name="uname" required>
-
-                <label for="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" required>
-
-                <button type="submit">Login</button>
+            <div class="container" style="font-family: Francois One;">
+                <div>
+                    <label for="uname" style="color: #05386b"><b>Username</b></label>
+                </div>
+                <div>
+                    <input type="text" placeholder="Enter Username" name="uname" required>
+                </div>
+                <br />
+                <div>
+                    <label for="psw" style="color: #05386b"><b>Password</b></label>
+                </div>
+                <div>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
+                </div>
+                <br />
+                <button type="submit" style="color: #edf5e1">Login</button>
                 <label>
                     <input type="checkbox" checked="checked" name="remember"> Remember me
                 </label>
             </div>
+        </form>
+    </div>
 
-            <div class="container" style="background-color:#f1f1f1">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                <span class="psw">Forgot <a href="#">password?</a></span>
+    <div id="id02" class="modal">
+
+        <form class="modal-content animate" style=" background-color: #5cdb95;" action="/action_page.php">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+            </div>
+
+            <div class="container" style="font-family: Francois One;">
+                <div>
+                    <label for="email" style="color: #05386b"><b>Email address</b></label>
+                </div>
+                <div>
+                    <input type="text" placeholder="Enter email address" name="email" required>
+                </div>
+                <br />
+                <div>
+                    <label for="cemail" style="color: #05386b"><b>Confirm email address</b></label>
+                </div>
+                <div>
+                    <input type="text" placeholder="Enter email address again" name="cemail" required>
+                </div>
+                <br />
+                <div>
+                    <label for="psw" style="color: #05386b"><b>Password</b></label>
+                </div>
+                <div>
+                    <input type="password" placeholder="Enter Password" name="psw" required>
+                </div>
+                <br />
+                <div>
+                    <label for="cpsw" style="color: #05386b"><b>Confirm Password</b></label>
+                </div>
+                <div>
+                    <input type="password" placeholder="Enter Password again" name="cpsw" required>
+                </div>
+                <br />
+                <button type="submit" style="color: #edf5e1">Register</button>
             </div>
         </form>
     </div>

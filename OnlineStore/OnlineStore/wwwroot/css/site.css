@@ -36,7 +36,7 @@
 
 /* Full-width input fields */
 input[type=text], input[type=password] {
-    width: 70%;
+    width: 37%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -93,10 +93,10 @@ span.psw {
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
-    width: 40%; /* Full width */
+    width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: #5cdb95 /* Fallback color */
+    background-color: #8ee4af; /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     padding-top: 60px;
 }
@@ -105,7 +105,7 @@ span.psw {
 .modal-content {
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 30%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button (x) */
@@ -118,11 +118,11 @@ span.psw {
     font-weight: bold;
 }
 
-    .close:hover,
-    .close:focus {
-        color: red;
-        cursor: pointer;
-    }
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
 
 /* Add Zoom Animation */
 .animate {
