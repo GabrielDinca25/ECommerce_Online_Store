@@ -10,11 +10,11 @@
         <link rel="stylesheet" href="~/css/site.css" />
         <link href='https://fonts.googleapis.com/css?family=Francois+One' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Playball' rel='stylesheet' type='text/css'>
-        
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="~/css/style.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -22,27 +22,36 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+
+    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="~/css/product-grid.css" />
 </head>
 <body style="background-color: #5cdb95">
     <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #5cdb95">
-        <div class="container">
-            <div class="navbar-header">
+        <div class="container-fluid nav-container">
+            <div class="navbar-header" style="margin-right: 425px;">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a style="color: #05386b" asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand navbrand">
+                <a style="color: #05386b; font-size: 38px;" asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand navbrand">
                     Clockwise
                 </a>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav" >
+                <ul class="nav navbar-nav">
                     <li><a class="navbutton" style="color: #05386b" asp-area="" asp-controller="Home" asp-action="Index">Men</a></li>
                     <li><a class="navbutton" style="color: #05386b" asp-area="" asp-controller="Home" asp-action="About">Women</a></li>
                     <li><a class="navbutton" style="color: #05386b" asp-area="" asp-controller="Home" asp-action="Contact">Other accessories</a></li>
+                    <li><a class="navbutton" style="color: #05386b; margin-left: 370px;" asp-area="" asp-controller="Home" asp-action="Contact">Login </a></li>
+                    <li><a class="navbutton" style="color: #05386b" asp-area="" asp-controller="Home" asp-action="Contact">Register</a></li>
                 </ul>
+            </div>
+            <div class="navbar-collapse collapse" style="float: right">
+                <ul class="nav navbar-nav">
+                </ul>    
             </div>
         </div>
     </nav>
