@@ -1,0 +1,67 @@
+﻿.panel-body
+.btn:not(.btn-block) {
+    width: 140px !important;
+    height: 135px !important;
+    margin-bottom: 10px !important;
+    vertical-align: middle !important;
+    text-align: center !important;
+    text-wrap: normal !important;
+    padding: 15px 0 0 0 !important;
+}
+/* Font Size For Button Text */
+.glyphsize {
+    font-size: 48px !important;
+}
+
+.panel-footer {
+    line-height: inherit !important;
+}
+/* Colours Used for Glyphicons and some text */
+
+/* Button Colours */
+.btn-dblue {
+    color: #ffffff;
+    background-color: #05386b;
+
+    border-color: #000A7A;
+}
+
+    .btn-dblue:hover,
+    .btn-dblue:focus,
+    .btn-dblue:active,
+    .btn-dblue.active,
+    .open .dropdown-toggle.btn-dblue {
+        color: #ffffff;
+        background-color: #05387B;
+        border-color: #000A7A;
+    }
+
+    .btn-dblue:active,
+    .btn-dblue.active,
+    .open .dropdown-toggle.btn-dblue {
+        background-image: none;
+    }
+
+    .btn-dblue.disabled,
+    .btn-dblue[disabled],
+    fieldset[disabled] .btn-dblue,
+    .btn-dblue.disabled:hover,
+    .btn-dblue[disabled]:hover,
+    fieldset[disabled] .btn-dblue:hover,
+    .btn-dblue.disabled:focus,
+    .btn-dblue[disabled]:focus,
+    fieldset[disabled] .btn-dblue:focus,
+    .btn-dblue.disabled:active,
+    .btn-dblue[disabled]:active,
+    fieldset[disabled] .btn-dblue:active,
+    .btn-dblue.disabled.active,
+    .btn-dblue[disabled].active,
+    fieldset[disabled] .btn-dblue.active {
+        background-color: #1B23BD;
+        border-color: #000A7A;
+    }
+
+    .btn-dblue .badge {
+        color: #1B23BD;
+        background-color: #ffffff;
+    }
