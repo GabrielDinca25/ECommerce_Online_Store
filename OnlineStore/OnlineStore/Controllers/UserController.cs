@@ -19,13 +19,11 @@ namespace OnlineStore.Controllers
             this.db = db;
         }
 
-        [HttpGet]
+        [HttpPost]
         [ActionName("Register")]
-        public async Task<IActionResult> Register([FromForm] User userToAdd)
+        public String Register([FromBody] dynamic userToRegister)
         {
-            await db.Users.AddAsync(userToAdd);
-
-            return View("Index");
+            return "Success";
         }
 
 

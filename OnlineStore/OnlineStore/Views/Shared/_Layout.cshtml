@@ -16,6 +16,12 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+        <script src="~/js/site.js"></script>
+        <script src="~/js/UsersAPI.js"></script>
+        <link rel="stylesheet" href="~/css/style.css" />
+        <link rel="stylesheet" href="~/css/product-grid.css" />
+        <link rel="stylesheet" href="~/css/adminpanel.css" />
+
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -23,10 +29,7 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
-    <script src="~/js/site.js"></script>
-    <link rel="stylesheet" href="~/css/style.css" />
-    <link rel="stylesheet" href="~/css/product-grid.css" />
-    <link rel="stylesheet" href="~/css/adminpanel.css" />
+
 </head>
 <body style="background-color: #5cdb95">
     <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #5cdb95">
@@ -95,7 +98,7 @@
 
     <div id="id02" class="modal">
 
-        <form class="modal-content animate" style=" background-color: #5cdb95;" >
+        <form class="modal-content animate" id="registerForm" style=" background-color: #5cdb95;" >
             <div class="imgcontainer">
                 <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
             </div>
@@ -130,7 +133,7 @@
                     <input type="password" placeholder="Enter Password again" name="cpsw" required>
                 </div>
                 <br />
-                <button action="login()" type="submit" style="color: #edf5e1">Register</button>
+                <button onclick="Register()" type="submit" style="color: #edf5e1">Register</button>
             </div>
         </form>
     </div>
