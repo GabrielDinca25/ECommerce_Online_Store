@@ -1,79 +1,77 @@
-﻿//function UsersAPI() {
-//    var doAsyncPost = function (data) {
-//        server_address = 'http://localhost:63671/api/User/Register';
-//        return $.ajax({
-//            url: server_address,
-//            type: "POST",
-//            dataType: 'text',
-//            contentType: "application/json",
-//            data: data,
-//            success: function (result) {
-//                console.log("Success");
-//            },
-//            error: function (xhr, resp, text) {
-//                console.log("Failure");
-//            }
-//        });
-//    }
-
-//    this.makePostRequest = function (data) {
-//        return doAsyncPost(data);
-//    }
-
-//    UsersAPI.instance = this;
-//}
-
-
-
-//$(document).ready(function () {
-//    (function ($) {
-//        $.fn.serializeFormJSON = function () {
-
-//            var o = {};
-//            var a = this.serializeArray();
-//            $.each(a, function () {
-//                if (o[this.name]) {
-//                    if (!o[this.name].push) {
-//                        o[this.name] = [o[this.name]];
-//                    }
-//                    o[this.name].push(this.value || '');
-//                } else {
-//                    o[this.name] = this.value || '';
-//                }
-//            });
-//            return o;
-//        };
-//    })(jQuery);
-
-//    $("#registerButton").on('click', function () {
-//        var obj = $("#registerForm").serializeFormJSON();
-
-//        var jsonString = JSON.stringify(obj);
-
-//        var usersAPI = new UsersAPI();
-
-//        var result = usersAPI.makePostRequest(jsonString);
-//        result.done(
-//            function (response) {
-//                console.log(response)
-//            }
-//        );
-//    });
-//});
-function Register() {
-    var obj = JSON.stringify($('#registerForm').serializeArray());
-    obj = JSON.parse(obj);
-
-    $.ajax({
+﻿function makePostRequest(obj, server_address) {
+    return $.ajax({
         type: "POST",
-        url: 'http://localhost:63671/api/User/Register',
+        url: server_address,
         dataType: "text",
         contentType: "application/json",
-        data: JSON.stringify({ userToRegister: obj }),
+        data: JSON.stringify(obj),
 
         failure: function (errMsg) {
             alert(errMsg);
         }
     });
+}
+
+function Register() {
+    var obj = JSON.stringify($('#registerForm').serializeArray());
+    obj = JSON.parse(obj);
+
+    var validInput = true;
+    if (obj[0]["value"] != obj[1]["value"]) {
+        alert("Email and confirmed email do not match");
+
+        validInput = false;
+    }
+
+    if (obj[2]["value"] != obj[3]["value"]) {
+        alert("Password and confirmed password do not match");
+
+        validInput = false;
+    }
+
+    if (validInput) {
+        server_address = 'http://localhost:63671/api/Prodicts/Register';
+        var result = makePostRequest(obj, server_address);
+        result.done(
+            function (response) {
+                if (response == "Success")
+                {
+                    document.getElementById('registerModal').style.display = "none";
+                    document.getElementById('loginModal').style.display = "block";
+                    alert("Account successfully created, you can now log in!");
+
+                }
+                else
+                {
+                    alert(response);
+                }
+            }
+        );
+    }
+}
+
+function Login() {
+    var obj = JSON.stringify($('#loginForm').serializeArray());
+    obj = JSON.parse(obj);
+
+    server_address = 'http://localhost:63671/api/User/Login';
+
+    result = makePostRequest(obj, server_address);
+    result.done(
+        function (response) {
+            if (response.startsWith("Failure")) {
+                alert(response);
+            }   
+            else {
+                document.getElementById('loginModal').style.display = "none";
+                document.getElementById('loginButton').style.display = "none";
+                document.getElementById('registerButton').style.display = "none";
+                document.getElementById('loggedinUser').style.display = "block";
+                $('#loggedinUser').html("Logged in as: " + response);
+                alert("Sucessfully logged in");
+        
+            }
+        }
+    );
 }
 

@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -52,8 +53,9 @@
                     <li><a class="navbutton" style="color: #05386b" asp-area="" asp-controller="Home" asp-action="Contact">Other accessories</a></li>
                     <li><a class="navbutton" style="color: #05386b" asp-area="" asp-controller="Admin" asp-action="Admin">About</a></li>
                     <li><a class="navbutton" style="color: #05386b" asp-area="" asp-controller="ShoppingCart" asp-action="ShoppingCart">Contact</a></li>
-                    <li><a onclick="document.getElementById('id01').style.display='block'" class="navbutton" style="color: #05386b; margin-left: 350px;">Login </a></li>
-                    <li><a onclick="document.getElementById('id02').style.display='block'" class="navbutton" style="color: #05386b;">Register </a></li>
+                    <li style="display:none" id="loggedinUser"></li>
+                    <li><a onclick="document.getElementById('loginModal').style.display='block'" class="navbutton" id="loginButton" style="color: #05386b; margin-left: 350px;">Login </a></li>
+                    <li><a onclick="document.getElementById('registerModal').style.display='block'" class="navbutton" id="registerButton" style="color: #05386b;">Register </a></li>
                     @*<li><a class="navbutton" style="color: #05386b" asp-area="" asp-controller="Home" asp-action="Contact">Register</a></li>*@
                 </ul>
             </div>
@@ -63,13 +65,13 @@
         </div>
     </nav>
 
-    @*<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>*@
+    @*<button onclick="document.getElementById('loginModal').style.display='block'" style="width:auto;">Login</button>*@
 
-    <div id="id01" class="modal">
+    <div id="loginModal" class="modal">
 
-        <form class="modal-content animate" style=" background-color: #5cdb95;" action="/action_page.php">
+        <form class="modal-content animate" id="loginForm" style=" background-color: #5cdb95;">
             <div class="imgcontainer">
-                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <span onclick="document.getElementById('loginModal').style.display='none'" class="close" title="Close Modal">&times;</span>
                 <img src="~/images/avatar.png" alt="Avatar" class="avatar">
             </div>
 
@@ -78,7 +80,7 @@
                     <label for="uname" style="color: #05386b"><b>Username</b></label>
                 </div>
                 <div>
-                    <input type="text" placeholder="Enter Username" name="uname" required>
+                    <input type="text" placeholder="Enter Username" name="email" required>
                 </div>
                 <br />
                 <div>
@@ -88,7 +90,7 @@
                     <input type="password" placeholder="Enter Password" name="psw" required>
                 </div>
                 <br />
-                <button type="submit" style="color: #edf5e1">Login</button>
+                <button type="button" onclick="Login()" style="color: #edf5e1">Login</button>
                 <label>
                     <input type="checkbox" checked="checked" name="remember"> Remember me
                 </label>
@@ -96,11 +98,11 @@
         </form>
     </div>
 
-    <div id="id02" class="modal">
+    <div id="registerModal" class="modal">
 
-        <form class="modal-content animate" id="registerForm" style=" background-color: #5cdb95;" >
+        <form class="modal-content animate" id="registerForm" style=" background-color: #5cdb95;">
             <div class="imgcontainer">
-                <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+                <span onclick="document.getElementById('registerModal').style.display='none'" class="close" title="Close Modal">&times;</span>
             </div>
 
             <div class="container" style="font-family: Francois One;">
@@ -119,7 +121,8 @@
                     <input type="text" placeholder="Enter email address again" name="cemail" required>
                 </div>
                 <br />
-                <div>w
+                <div>
+                    w
                     <label for="psw" style="color: #05386b"><b>Password</b></label>
                 </div>
                 <div>
@@ -133,7 +136,7 @@
                     <input type="password" placeholder="Enter Password again" name="cpsw" required>
                 </div>
                 <br />
-                <button onclick="Register()" type="submit" style="color: #edf5e1">Register</button>
+                <button onclick="Register()" type="button" style="color: #edf5e1">Register</button>
             </div>
         </form>
     </div>
