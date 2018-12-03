@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<!------ Include the above in your HEAD tag ---------->
+<div class="container" style="width: 81%; margin-top: 100px;">
+    <section>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-primary" style="background-color: #5cdb95; border: none">
+
+                    <div class="panel-body" style="border:none">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a href="#" onclick="document.getElementById('add-product').style.display='block'" class="btn btn-dblue btn-lg" role="button"><span class="glyphicon glyphicon glyphicon-time glyphsize"></span> <br />Add <span class="glyphicon glyphicon-plus "></span><br />Product</a>
+                                <a href="#" onclick="document.getElementById('add-product').style.display='block'" class="btn btn-dblue btn-lg" role="button"><span class="glyphicon glyphicon glyphicon-time glyphsize"></span> <br />Edit <span class="glyphicon glyphicon-edit "></span><br />Product</a>
+                                <a href="#" onclick="document.getElementById('add-product').style.display='block'"class="btn btn-dblue btn-lg" role="button"><span class="glyphicon glyphicon glyphicon-time glyphsize"></span> <br />Remove <span class="glyphicon glyphicon-minus "></span><br />Product</a>
+                                <a href="#" onclick="document.getElementById('add-product').style.display='block'" class="btn btn-dblue btn-lg" role="button"><span class="glyphicon glyphicon-user glyphsize"></span> <br />Add <span class="glyphicon glyphicon-plus "></span><br />User</a>
+                                <a href="#" onclick="document.getElementById('add-product').style.display='block'" class="btn btn-dblue btn-lg" role="button"><span class="glyphicon glyphicon-user glyphsize"></span> <br />Edit <span class="glyphicon glyphicon-edit "></span><br />User</a>
+                                <a href="#" onclick="document.getElementById('add-product').style.display='block'" class="btn btn-dblue btn-lg" role="button"><span class="glyphicon glyphicon-user glyphsize"></span> <br />Remove <span class="glyphicon glyphicon-minus "></span><br />User</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="add-product" class="modal">
+
+                <form class="modal-content animate" style=" background-color: #5cdb95;" action="/action_page.php">
+                    <div class="imgcontainer">
+                        <span onclick="document.getElementById('add-product').style.display='none'" class="close" title="Close Modal">&times;</span>
+                    </div>
+
+                    <div class="container" style="font-family: Francois One;">
+                        <div>
+                            <label for="uname" style="color: #05386b"><b>Product name</b></label>
+                        </div>
+                        <div>
+                            <input type="text" placeholder="Enter Product Name" name="uname" required>
+                        </div>
+                        <br />
+                        <div>
+                            <label for="psw" style="color: #05386b"><b>Product Price</b></label>
+                        </div>
+                        <div>
+                            <input type="text" placeholder="Enter Price" name="psw" required>
+                        </div>
+                        <div>
+                            <label for="psw" style="color: #05386b"><b>Product Image</b></label>
+                        </div>
+                        <div>
+                            <input type="text" placeholder="Upload image" name="psw" required>
+                        </div>
+                        <div>
+                            <input type="file" name="pic" accept="image/*">
+                        </div>
+                        <br />
+                        <button type="submit" style="color: #edf5e1">Add</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </section>
+</div>
