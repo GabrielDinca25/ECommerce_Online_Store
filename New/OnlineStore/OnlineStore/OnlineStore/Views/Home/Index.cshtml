@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+
+    var counter = 0;
+}
+
+<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+        <div class="item active carousel-item">
+            <span style="font-family: Francois One; font-size: 100px; color: #edf5e1; display:table;
+margin:0 auto;">GET THE LATEST OFFERS</span>
+        </div>
+        <div class="item carousel-item">
+            <span style="font-family: Francois One; font-size: 100px; color: #edf5e1; display:table;
+margin:0 auto;">SAVE UP TO 30%</span>
+        </div>
+
+        <div class="item carousel-item">
+            <span style="font-family: Francois One; font-size: 100px; color: #edf5e1; display:table;
+margin:0 auto;">ONLY FOR MEMBERS</span>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row product-row">
+        @foreach (var product in ViewBag.Products)
+        {
+            counter++;
+            <div class="col-md-4">
+                <div class="content">
+                    <a href="#" target="_blank">
+                        <div class="content-overlay"></div>
+                        <img class="content-image" src="@product.ImagePath">
+                        <div class="content-details fadeIn-bottom">
+                            <h3 class="content-title">@product.Name</h3>
+                            <p class="content-text">$@product.Price</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        }
+    </div>    
+</div>
+
+
+
