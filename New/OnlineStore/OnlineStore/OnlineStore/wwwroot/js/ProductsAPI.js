@@ -57,7 +57,9 @@ function AddProduct() {
     );
 }
 
-function OpenEditModal(productId) {
+function OpenEditModal() {
+    var productId = $(this).closest('tr').find('td:nth-child(1)').text();
+
     $('editProductId').val(productId)
 
     document.getElementById('edit-product').style.display = 'block'
@@ -100,6 +102,14 @@ $(document).ready(function () {
             );
         }
     });
+    $('.edit-product').click(function () {
+        var productId = $(this).closest('tr').find('td:nth-child(1)').text();
+
+        document.getElementById("editProductId").value = productId.toString();
+
+        document.getElementById('edit-product').style.display = 'block';
+    });
+
 });
 
 

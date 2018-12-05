@@ -162,6 +162,11 @@ span.psw {
     }
 }
 
+body {
+    background-image: url("~/images/bg.png");
+    background-repeat: repeat-y repeat-x;
+}
+
 #loginModal > * {
     padding-left: 20px;
     padding-right: 20px;

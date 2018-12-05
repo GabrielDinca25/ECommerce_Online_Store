@@ -31,7 +31,7 @@ namespace OnlineStore.Controllers
                 String id = Guid.NewGuid().ToString("N").Substring(0,7);
                 String name = productToAdd[0]["value"].ToString();
                 String price = productToAdd[1]["value"].ToString();
-                String image = "~/images/" + productToAdd[2]["value"].ToString();
+                String image = "/images/" + productToAdd[2]["value"].ToString();
                 String quantity = productToAdd[3]["value"].ToString();
 
                 Product product = new Product(id, name, price, image, quantity);
@@ -58,9 +58,36 @@ namespace OnlineStore.Controllers
 
         [HttpPost]
         [ActionName("Edit")]
-        public ActionResult Edit([FromBody] dynamic productToEdit)
+        public ActionResult Edit([FromBody] dynamic updatedProduct)
         {
-            return View();
+            {
+                try
+                {
+                    String id = updatedProduct[0]["value"].ToString();
+                    String newName = updatedProduct[1]["value"].ToString();
+                    String newPrice = updatedProduct[2]["value"].ToString();
+                    String newImage = "/images/" + updatedProduct[3]["value"].ToString();
+                    String newQuantity = updatedProduct[4]["value"].ToString();
+
+                    var productToUpdate = db.Products.Where(p => p.Id.Equals(id)).FirstOrDefault();
+
+                    if(productToUpdate != null)
+                    {
+                        productToUpdate.Name = newName;
+                        productToUpdate.Price = newPrice;
+                        productToUpdate.ImagePath = newImage;
+                        productToUpdate.Quantity = newQuantity;
+
+                        db.SaveChanges();
+                    }
+
+                    return View();
+                }
+                catch
+                {
+                    return View();
+                }
+            }
         }
 
         [HttpPost]
