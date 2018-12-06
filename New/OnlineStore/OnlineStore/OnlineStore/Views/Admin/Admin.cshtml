@@ -4,11 +4,21 @@
 }
 
 <!------ Include the above in your HEAD tag ---------->
+
 <div class="container" style="width: 81%; margin-top: 100px;">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
-                <button type="button" onclick="document.getElementById('add-product').style.display='block'" class="btn btn-primary">Add Product</button>
+            <div style="display: block;" class="col-md-12">
+                <div style="display: block;">
+                </div>
+                <div style="display: block;">
+                    <button type="button" onclick="document.getElementById('add-product').style.display='block'">Add Product</button>
+                    <button  style="float: right; margin-left: 5px;" onclick="SearchAdminProducts()">Search</button>
+
+                    <input id="adminSearchBar" style="float: right; margin: 0;" class="searchbar" type="text" placeholder="Search..">
+                </div>
+            </div>
+                </div>
                 <hr />
                 <div class="table-responsive">
                     <table id="mytable" class="table table-bordred">
@@ -23,15 +33,16 @@
                         <tbody id="productList">
                             @foreach (var product in ViewBag.Products)
                             {
-                                <tr>
+                            <tr>
 
-                                    <td>@product.Id</td>
-                                    <td>@product.Name</td>
-                                    <td>@product.Price</td>
-                                    <td>@product.Quantity</td>
-                                    <td><p data-placement="top" class="edit-product" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                                    <td><p data-placement="top" class="dlt-product" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></td>
-                                </tr>
+                                <td>@product.Id</td>
+                                <td>@product.Name</td>
+                                <td>@product.Price</td>
+                                <td>@product.ImagePath</td>
+                                <td>@product.Quantity</td>
+                                <td><p data-placement="top" class="edit-product" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                                <td><p data-placement="top" class="dlt-product" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                            </tr>
                             }
                         </tbody>
 
@@ -94,28 +105,28 @@
                     <label for="Name" style="color: #05386b"><b>Product name</b></label>
                 </div>
                 <div>
-                    <input type="text" placeholder="Enter Product Name" name="Name" required>
+                    <input id="editProductName" type="text" placeholder="Enter Product Name" name="Name" required>
                 </div>
                 <div>
                     <label for="Price" style="color: #05386b"><b>Product Price</b></label>
                 </div>
                 <div>
-                    <input type="text" placeholder="Enter Price" name="Price" required>
+                    <input id="editProductPrice" type="text" placeholder="Enter Price" name="Price" required>
                 </div>
                 <div>
                     <label for="ImagePath" style="color: #05386b"><b>Product Image</b></label>
                 </div>
                 <div>
-                    <input type="text" placeholder="Image Name" name="ImagePath" required>
+                    <input id="editProductImagePath" type="text" placeholder="Image Name" name="ImagePath" required>
                 </div>
                 <div>
                     <label for="Quantity" style="color: #05386b"><b>Quantity</b></label>
                 </div>
                 <div>
-                    <input type="number" placeholder="Quantity" name="Quantity" required>
+                    <input  id="editProductQuantity" type="number" placeholder="Quantity" name="Quantity" required>
                 </div>
                 <br />
-                <button type="button" onclick="EditProduct()" style="color: #edf5e1">Add</button>
+                <button type="button" onclick="EditProduct()" style="color: #edf5e1">Update Product</button>
             </div>
         </form>
     </div>

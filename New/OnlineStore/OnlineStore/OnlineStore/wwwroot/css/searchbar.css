@@ -1,0 +1,7 @@
+﻿.searchbar {
+    height: 50px;
+    width: 190px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+

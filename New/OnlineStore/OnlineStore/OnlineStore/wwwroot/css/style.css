@@ -112,3 +112,8 @@
         margin-bottom: 20px;
     }
 }
+
+#productList > tr:hover
+{
+
+}

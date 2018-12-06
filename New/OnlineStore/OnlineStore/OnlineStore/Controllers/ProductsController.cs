@@ -24,7 +24,7 @@ namespace OnlineStore.Controllers
         // POST: Default/Create
         [HttpPost]
         [ActionName("AddProduct")]
-        public ActionResult AddProduct([FromBody] dynamic productToAdd)
+        public String AddProduct([FromBody] dynamic productToAdd)
         {
             try
             {
@@ -39,11 +39,11 @@ namespace OnlineStore.Controllers
                 db.Products.Add(product);
                 db.SaveChanges();
 
-                return View();
+                return "Success";
             }
             catch
             {
-                return View();
+                return "Failure";
             }
         }
 
@@ -58,7 +58,7 @@ namespace OnlineStore.Controllers
 
         [HttpPost]
         [ActionName("Edit")]
-        public ActionResult Edit([FromBody] dynamic updatedProduct)
+        public String Edit([FromBody] dynamic updatedProduct)
         {
             {
                 try
@@ -66,7 +66,7 @@ namespace OnlineStore.Controllers
                     String id = updatedProduct[0]["value"].ToString();
                     String newName = updatedProduct[1]["value"].ToString();
                     String newPrice = updatedProduct[2]["value"].ToString();
-                    String newImage = "/images/" + updatedProduct[3]["value"].ToString();
+                    String newImage = updatedProduct[3]["value"].ToString();
                     String newQuantity = updatedProduct[4]["value"].ToString();
 
                     var productToUpdate = db.Products.Where(p => p.Id.Equals(id)).FirstOrDefault();
@@ -75,17 +75,18 @@ namespace OnlineStore.Controllers
                     {
                         productToUpdate.Name = newName;
                         productToUpdate.Price = newPrice;
+                        productToUpdate.ImagePath = "";
                         productToUpdate.ImagePath = newImage;
                         productToUpdate.Quantity = newQuantity;
 
                         db.SaveChanges();
                     }
 
-                    return View();
+                    return "Success";
                 }
                 catch
                 {
-                    return View();
+                    return "Failure";
                 }
             }
         }

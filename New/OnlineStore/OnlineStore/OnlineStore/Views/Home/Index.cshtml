@@ -28,10 +28,19 @@ margin:0 auto;">ONLY FOR MEMBERS</span>
 </div>
 
 <div class="container">
-    <div class="row product-row">
+    <div id="imaginary_container">
+        <div style="display:block;" class="input-group stylish-input-group">
+                <input id="homeSearchBar" class="searchbar" type="text" placeholder="Search..">
+                <button onclick="SearchProducts()">Search</button>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+
+    <div id="productRow" class="row product-row">
         @foreach (var product in ViewBag.Products)
         {
-            counter++;
             <div class="col-md-4">
                 <div class="content">
                     <a href="#" target="_blank">
@@ -44,9 +53,8 @@ margin:0 auto;">ONLY FOR MEMBERS</span>
                     </a>
                 </div>
             </div>
-
         }
-    </div>    
+    </div>
 </div>
 
 

@@ -22,6 +22,7 @@
         <link rel="stylesheet" href="~/css/style.css" />
         <link rel="stylesheet" href="~/css/product-grid.css" />
         <link rel="stylesheet" href="~/css/adminpanel.css" />
+        <link rel="stylesheet" href="~/css/searchbar.css" />
 
     </environment>
     <environment exclude="Development">
@@ -52,6 +53,7 @@
                     <li><a class="navbutton" style="color: #05386b" asp-area="" asp-controller="Home" asp-action="About">Women</a></li>
                     <li><a class="navbutton" style="color: #05386b" asp-area="" asp-controller="Home" asp-action="Contact">Other accessories</a></li>
                     <li><a class="navbutton" style="color: #05386b" asp-area="" asp-controller="Admin" asp-action="Admin">About</a></li>
+
                     <li><a class="navbutton" style="color: #05386b" asp-area="" asp-controller="ShoppingCart" asp-action="ShoppingCart">Contact</a></li>
                     <li style="display:none" id="loggedinUser"></li>
                     @await Html.PartialAsync("_LoginPartial")

@@ -26,6 +26,20 @@ namespace OnlineStore.Controllers
             return View();
         }
 
+        public IActionResult Indexx()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        [Route("api/Home/DisplaySearchResults")]
+        public IEnumerable<Product> DisplaySearchResults([FromBody]string searchTerm)
+        {
+            products = db.Products.Where(p => p.Name.ToLower().Contains(searchTerm.ToLower())).ToList();
+            return products.AsEnumerable() ;
+        }
+
         public void GetProducts()
         {
             products = db.Products.ToList();
