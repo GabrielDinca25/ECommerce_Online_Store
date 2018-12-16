@@ -40,7 +40,7 @@ function makeGetRequest(server_address) {
 function AddProduct() {
     var obj = JSON.stringify($('#addProductForm').serializeArray());
     obj = JSON.parse(obj);
-
+    obj.
     server_address = 'https://localhost:44350/api/Products/AddProduct';
     var result = makePostRequest(obj, server_address);
     result.done(
@@ -148,4 +148,12 @@ $(document).ready(function () {
         document.getElementById('edit-product').style.display = 'block';
     });
 
+    var signedInUser = document.getElementById("signedInUser").innerHTML;
+
+    if (signedInUser.startsWith("admin@email.com")) {
+        document.getElementById("adminPanel").style.display = "block";
+    }
+
 });
+
+

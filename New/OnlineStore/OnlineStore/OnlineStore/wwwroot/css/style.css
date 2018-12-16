@@ -113,7 +113,6 @@
     }
 }
 
-#productList > tr:hover
-{
-
+#productList tr:hover {
+    background-color: #14A76C;
 }
