@@ -25,6 +25,7 @@ namespace OnlineStore.Data
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<CartProduct> CartProducts { get; set; }
 
     }
 }

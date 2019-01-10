@@ -4,6 +4,9 @@
     var counter = 0;
 }
 
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -30,8 +33,32 @@ margin:0 auto;">ONLY FOR MEMBERS</span>
 <div class="container">
     <div id="imaginary_container">
         <div style="display:block; margin-left: 400px;" class="input-group stylish-input-group">
-                <input id="homeSearchBar" class="searchbar" type="text" placeholder="Search..">
-                <button onclick="SearchProducts()">Search</button>
+            <input id="homeSearchBar" class="searchbar" type="text" placeholder="Search..">
+            <button onclick="SearchProducts()">Search</button>
+        </div>
+        <div id="clearSearch" style="display:none; margin-left: 500px;">
+            <button onclick="location.reload()"><span onclick="location.reload()" class="glyphicon glyphicon-remove"> </span>Clear search</button>
+        </div>
+    </div>
+    <br />
+    <div style="display:block; margin-left: 220px;" >
+        
+        <div style="margin-left:100px; display: inline-block">
+            <label class="checkbox-inline">
+                <input type="checkbox" onclick="Filter()" name="priceRange" value="1-100">$1 - $100
+            </label>
+            <label class="checkbox-inline">
+                <input type="checkbox" onclick="Filter()" name="priceRange" value="100-200">$100 - $200
+            </label>
+            <label class="checkbox-inline">
+                <input type="checkbox" onclick="Filter()" name="priceRange" value="200-300">$200 - $300
+            </label>
+            <label class="checkbox-inline">
+                <input type="checkbox" onclick="Filter()" name="priceRange" value="300-400">$300 - $400
+            </label>
+            <label class="checkbox-inline">
+                <input type="checkbox" onclick="Filter()" name="priceRange" value="400-500">$400 - $500
+            </label>
         </div>
     </div>
 </div>
@@ -41,16 +68,26 @@ margin:0 auto;">ONLY FOR MEMBERS</span>
     <div id="productRow" class="row product-row">
         @foreach (var product in ViewBag.Products)
         {
-            <div class="col-md-4">
+            <div style="margin-top: 30px;" class="col-md-4">
                 <div class="content">
-                    <a href="#" target="_blank">
-                        <div class="content-overlay"></div>
-                        <img class="content-image" src="@product.ImagePath">
-                        <div class="content-details fadeIn-bottom">
-                            <h3 class="content-title">@product.Name</h3>
-                            <p class="content-text">$@product.Price</p>
+                    <div class="content-overlay"></div>
+                    <img class="content-image" src="@product.ImagePath">
+                    <div class="content-details fadeIn-bottom">
+                        <h3 class="content-title">@product.Name</h3>
+                        <p class="content-text">$@product.Price</p>
+
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <table style="width: 100%">
+                                <tr>
+                                    <td style="display: none">@product.Id</td>
+                                    <td>
+                                        <button class="add-to-cart" style="color: #edf5e1">Add to Cart</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        }
                         </div>
-                    </a>
                 </div>
             </div>
         }

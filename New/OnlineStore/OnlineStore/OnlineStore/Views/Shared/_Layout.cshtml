@@ -55,18 +55,15 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a class="navbutton" style="color: #05386b" asp-area="" asp-controller="Home" asp-action="Index">Men</a></li>
-                    <li><a class="navbutton" style="color: #05386b" asp-area="" asp-controller="Home" asp-action="About">Women</a></li>
-                    <li><a class="navbutton" style="color: #05386b" asp-area="" asp-controller="Home" asp-action="Contact">Other accessories</a></li>
 
-                    <li><a class="navbutton" style="color: #05386b" asp-area="" asp-controller="ShoppingCart" asp-action="ShoppingCart"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-                    <li id="adminPanel" style="display: none"><a class="navbutton" style="color: #05386b" asp-area="" asp-controller="Admin" asp-action="Admin"><span class="glyphicon glyphicon-cog"></span></a></li>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li id="shoppingCart"><a class="navbutton" style="margin-left: -260px; color: #05386b;" asp-area="" asp-controller="ShoppingCart" asp-action="ShoppingCart"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+                    }
 
+                    <li id="adminPanel" style="display: none"><a class="navbutton" style="margin-left: -200px; color: #05386b" asp-area="" asp-controller="Admin" asp-action="Admin"><span class="glyphicon glyphicon-cog"></span></a></li>
                     <li style="display:none" id="loggedinUser"></li>
                     @await Html.PartialAsync("_LoginPartial")
-                    @*<li><a onclick="document.getElementById('loginModal').style.display='block'" class="navbutton" id="loginButton" style="color: #05386b; margin-left: 350px;">Login </a></li>
-                        <li><a onclick="document.getElementById('registerModal').style.display='block'" class="navbutton" id="registerButton" style="color: #05386b;">Register </a></li>*@
-                    @*<li><a class="navbutton" style="color: #05386b" asp-area="" asp-controller="Home" asp-action="Contact">Register</a></li>*@
                 </ul>
             </div>
             <div class="navbar-collapse collapse" style="float: right">

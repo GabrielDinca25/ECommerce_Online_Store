@@ -10,3 +10,7 @@ E:\Workspace\OnlineStore\OnlineStore\OnlineStore\obj\Debug\netcoreapp2.0\OnlineS
 E:\Workspace\OnlineStore\OnlineStore\OnlineStore\obj\Debug\netcoreapp2.0\OnlineStore.AssemblyInfo.cs
 E:\Workspace\OnlineStore\OnlineStore\OnlineStore\obj\Debug\netcoreapp2.0\OnlineStore.dll
 E:\Workspace\OnlineStore\OnlineStore\OnlineStore\obj\Debug\netcoreapp2.0\OnlineStore.pdb
+F:\Workspace\ECommerce_Online_Store\New\OnlineStore\OnlineStore\obj\Debug\netcoreapp2.0\OnlineStore.csproj.CoreCompileInputs.cache
+F:\Workspace\ECommerce_Online_Store\New\OnlineStore\OnlineStore\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+F:\Workspace\ECommerce_Online_Store\New\OnlineStore\OnlineStore\obj\Debug\netcoreapp2.0\OnlineStore.AssemblyInfoInputs.cache
+F:\Workspace\ECommerce_Online_Store\New\OnlineStore\OnlineStore\obj\Debug\netcoreapp2.0\OnlineStore.AssemblyInfo.cs

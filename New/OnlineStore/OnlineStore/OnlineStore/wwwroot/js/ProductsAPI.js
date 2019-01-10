@@ -40,8 +40,7 @@ function makeGetRequest(server_address) {
 function AddProduct() {
     var obj = JSON.stringify($('#addProductForm').serializeArray());
     obj = JSON.parse(obj);
-    obj.
-    server_address = 'https://localhost:44350/api/Products/AddProduct';
+    server_address = 'https://localhost:44390/api/Products/AddProduct';
     var result = makePostRequest(obj, server_address);
     result.done(
         function (response) {
@@ -70,7 +69,7 @@ function EditProduct() {
     var obj = JSON.stringify($('#editProductForm').serializeArray());
     obj = JSON.parse(obj);
 
-    server_address = 'https://localhost:44350/api/Products/Edit';
+    server_address = 'https://localhost:44390/api/Products/Edit';
     var result = makePostRequest(obj, server_address);
     result.done(
         function (response) {
@@ -86,9 +85,9 @@ function EditProduct() {
 }
 
 function SearchProducts() {
+    document.getElementById('clearSearch').style.display = 'block';
     var searchTerm = document.getElementById("homeSearchBar").value;
-    server_address = 'https://localhost:44350/api/Home/DisplaySearchResults';
-
+    server_address = 'https://localhost:44390/api/Home/DisplaySearchResults';
 
     result = makeTextPostRequest(searchTerm, server_address);
     result.done(function (response){
@@ -101,8 +100,7 @@ function SearchProducts() {
 
 function SearchAdminProducts() {
     var searchTerm = document.getElementById("adminSearchBar").value;
-    server_address = 'https://localhost:44350/api/Home/DisplaySearchResults';
-
+    server_address = 'https://localhost:44390/api/Home/DisplaySearchResults';
 
     result = makeTextPostRequest(searchTerm, server_address);
     result.done(function (response) {
@@ -113,11 +111,24 @@ function SearchAdminProducts() {
     });
 }
 
+function Checkout() {
+    var obj = JSON.stringify($('#checkoutForm').serializeArray());
+
+    server_address = 'https://localhost:44390/api/ShoppingCart/DeleteAllProducts';
+
+    result = makeTextPostRequest("", server_address);
+    result.done(function (response) {
+        location.reload();
+
+    });
+}
+
 $(document).ready(function () {
+
     $('.dlt-product').click(function () {
         {
             var productId = $(this).closest('tr').find('td:nth-child(1)').text();
-            server_address = 'https://localhost:44350/api/Products/Delete';
+            server_address = 'https://localhost:44390/api/Products/Delete';
 
             result = makeTextPostRequest(productId, server_address);
             result.done(
@@ -147,6 +158,33 @@ $(document).ready(function () {
 
         document.getElementById('edit-product').style.display = 'block';
     });
+    $('.add-to-cart').click(function () {
+        var productId = $(this).closest('tr').find('td:nth-child(1)').text();
+
+        server_address = 'https://localhost:44390/api/ShoppingCart/AddToCart';
+
+        result = makeTextPostRequest(productId, server_address);
+        result.done(function (response) {
+            if (response == "Success") {
+                alert(response);
+            }
+        });
+    });
+    $('.dlt-cart-product').click(function () {
+        var productId = $(this).closest('tr').find('td:nth-child(1)').text();
+
+        server_address = 'https://localhost:44390/api/ShoppingCart/DeleteProduct';
+
+        result = makeTextPostRequest(productId, server_address);
+        result.done(function (response) {
+            if (response == "Success") {
+                location.reload();
+            }
+            else {
+                alert(response);
+            }
+        });
+    });
 
     var signedInUser = document.getElementById("signedInUser").innerHTML;
 
@@ -156,4 +194,43 @@ $(document).ready(function () {
 
 });
 
+function Filter() {
+    var prices = $.map($('input:checkbox[name=priceRange]:checked'), function (e, i) {
+        return e.value;
+    });
+
+    server_address = 'https://localhost:44390/api/Products/ReturnProducts';
+
+    result = makeTextPostRequest("", server_address);
+    result.done(function (response) {
+        if (prices.length) {
+            $("#productRow").html("");
+            var noResults = true;
+            for (var i = 0; i < response.length; i++) {
+                var eligible = true;
+
+                var currentPrice = parseFloat(response[i].price)
+                prices.forEach(function (pricerange) {
+                    var range = pricerange.split('-');
+                    var low = parseFloat(range[0]);
+                    var high = parseFloat(range[1]);
+                    if (currentPrice < low || currentPrice > high) {
+                        eligible = false;
+                    }
+                });
+                if (eligible) {
+                    noResults = false;
+                    $('#productRow').append('<div style="margin-top: 30px;" class="col-md-4"><div class="content"><a href="#" target="_blank"><div class="content-overlay"></div><img class="content-image" src="' + response[i].imagePath + '"><div class="content-details fadeIn-bottom"><h3 class="content-title">' + response[i].name + '</h3><p class="content-text">' + response[i].price + '</p></div></a></div></div>')
+                }
+            }
+            if (noResults == true) {
+                $("#productRow").html('<h1 style="color: white;">No results found</h1>');
+            }
+        }
+        else {
+            location.reload();
+        }
+        
+    });
+}
 

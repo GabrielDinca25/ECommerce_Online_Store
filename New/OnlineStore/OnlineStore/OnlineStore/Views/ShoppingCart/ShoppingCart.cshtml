@@ -6,8 +6,7 @@
 <div class="row">
     <div class="col-75">
         <div class="container-fluid shpcrt" style="color: #05386b; background-color: #f2f2f2; padding: 5px 20px 15px 20px; border: 1px solid lightgrey; border-radius: 3px;">
-            <form action="/action_page.php">
-
+            <form id="checkoutForm">
                 <div class="row">
                     <div class="col-50">
                         <h3>Billing Address</h3>
@@ -63,19 +62,41 @@
                 <label>
                     <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
                 </label>
-                <input type="submit" style="background-color: #05386b" value="Continue to checkout" class="btn">
+                <button id="checkout" onclick="Checkout()" style="background-color: #05386b" class="btn">Continue to checkout </button>
             </form>
         </div>
     </div>
     <div class="col-25">
         <div class="container-fluid shpcrt" style="color: #05386b; background-color: #f2f2f2; padding: 5px 20px 15px 20px; border: 1px solid lightgrey; border-radius: 3px;">
-            <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
-            <p><a href="#">Product 1</a> <span class="price">$15</span></p>
-            <p><a href="#">Product 2</a> <span class="price">$5</span></p>
-            <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-            <p><a href="#">Product 4</a> <span class="price">$2</span></p>
+            <h4>Cart <span class="price" style="color:black; padding-right: 30px"><i class="fa fa-shopping-cart"></i> <b>@ViewBag.ProductsNumber</b></span></h4>
+            
+            <table style="width: 100%;">
+            @foreach (var product in ViewBag.Products)
+            {
+                <tr>
+                    <td style="display: none">@product.Id</td>
+                    <td style="width: 5%">
+                        <img class="content-image" src="@product.ImagePath">
+                    </td>
+                    <td style="padding-left: 10px;">
+                        <p><a href="#">@product.Name</a></p>
+                    </td>
+                    <td style="padding-right: 10px;">
+                        <h4><span class="price">$@product.Price</span></h4>
+                    </td>
+                    <td style="width: 2%;">
+                        <button class="dlt-cart-product">Remove</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><br /></td>
+                </tr>
+
+                 
+            }
+            </table>
             <hr>
-            <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+            <p>Total <span class="price" style="color:black"><b>$@ViewBag.Total</b></span></p>
         </div>
     </div>
 </div>

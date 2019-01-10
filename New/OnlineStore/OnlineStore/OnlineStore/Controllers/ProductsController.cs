@@ -41,10 +41,18 @@ namespace OnlineStore.Controllers
 
                 return "Success";
             }
-            catch
+            catch(Exception e)
             {
-                return "Failure";
+                return "Failure" + e.ToString();
             }
+        }
+
+        [HttpPost]
+        [ActionName("ReturnProducts")]
+        public IEnumerable<Product> ReturnProducts([FromBody] String val)
+        {
+            var products = db.Products.ToList();
+            return products.AsEnumerable();
         }
 
         [HttpGet]
