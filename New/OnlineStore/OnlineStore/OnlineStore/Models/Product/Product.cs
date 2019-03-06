@@ -10,11 +10,14 @@ namespace OnlineStore.Models.Product
     {
         public Product() { }
 
-        public Product(string id, string name, string price, string image, string quantity)
+        public Product(string id, string name, string price, string gender, string style, string description, string image, string quantity)
         {
             Id = id;
             Name = name;
             Price = price;
+            Gender = gender;
+            Style = style;
+            Description = description;
             ImagePath = image;
             Quantity = quantity;
         }
@@ -23,6 +26,9 @@ namespace OnlineStore.Models.Product
         public String Id { get; set; }
         public String Name { get; set; }
         public String Price { get; set; }
+        public String Gender { get; set; }
+        public String Style { get; set; }
+        public String Description { get; set; }
         public String Quantity { get; set; }
         public String ImagePath { get; set; }
     }

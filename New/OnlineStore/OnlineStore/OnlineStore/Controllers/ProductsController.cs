@@ -31,10 +31,13 @@ namespace OnlineStore.Controllers
                 String id = Guid.NewGuid().ToString("N").Substring(0,7);
                 String name = productToAdd[0]["value"].ToString();
                 String price = productToAdd[1]["value"].ToString();
-                String image = "/images/" + productToAdd[2]["value"].ToString();
-                String quantity = productToAdd[3]["value"].ToString();
+                String gender = productToAdd[2]["value"].ToString();
+                String style = productToAdd[3]["value"].ToString();
+                String description = productToAdd[4]["value"].ToString();
+                String image = "/images/" + productToAdd[5]["value"].ToString();
+                String quantity = productToAdd[6]["value"].ToString();
 
-                Product product = new Product(id, name, price, image, quantity);
+                Product product = new Product(id, name, price, gender, style, description, image, quantity);
 
                 db.Products.Add(product);
                 db.SaveChanges();
@@ -74,8 +77,11 @@ namespace OnlineStore.Controllers
                     String id = updatedProduct[0]["value"].ToString();
                     String newName = updatedProduct[1]["value"].ToString();
                     String newPrice = updatedProduct[2]["value"].ToString();
-                    String newImage = updatedProduct[3]["value"].ToString();
-                    String newQuantity = updatedProduct[4]["value"].ToString();
+                    String newGender = updatedProduct[3]["value"].ToString();
+                    String newStyle = updatedProduct[4]["value"].ToString();
+                    String newDescription = updatedProduct[5]["value"].ToString();
+                    String newImage = updatedProduct[6]["value"].ToString();
+                    String newQuantity = updatedProduct[7]["value"].ToString();
 
                     var productToUpdate = db.Products.Where(p => p.Id.Equals(id)).FirstOrDefault();
 
@@ -83,6 +89,9 @@ namespace OnlineStore.Controllers
                     {
                         productToUpdate.Name = newName;
                         productToUpdate.Price = newPrice;
+                        productToUpdate.Gender = newGender;
+                        productToUpdate.Style = newStyle;
+                        productToUpdate.Description = newDescription;
                         productToUpdate.ImagePath = "";
                         productToUpdate.ImagePath = newImage;
                         productToUpdate.Quantity = newQuantity;

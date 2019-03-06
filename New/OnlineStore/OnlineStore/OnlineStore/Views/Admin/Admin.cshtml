@@ -13,9 +13,6 @@
                 </div>
                 <div style="display: block;">
                     <button type="button" onclick="document.getElementById('add-product').style.display='block'">Add Product</button>
-                    <button  style="float: right; margin-left: 5px;" onclick="SearchAdminProducts()">Search</button>
-
-                    <input id="adminSearchBar" style="float: right; margin: 0;" class="searchbar" type="text" placeholder="Search..">
                 </div>
             </div>
                 </div>
@@ -26,6 +23,9 @@
                         <th>Product Id</th>
                         <th>Product Name</th>
                         <th>Price</th>
+                        <th>Gender</th>
+                        <th>Style</th>
+                        <th>ImagePath</th>
                         <th>Quantity</th>
                         <th>Edit</th>
                         <th>Remove</th>
@@ -33,16 +33,19 @@
                         <tbody id="productList">
                             @foreach (var product in ViewBag.Products)
                             {
-                            <tr>
+                                <tr>
 
-                                <td>@product.Id</td>
-                                <td>@product.Name</td>
-                                <td>@product.Price</td>
-                                <td>@product.ImagePath</td>
-                                <td>@product.Quantity</td>
-                                <td><p data-placement="top" class="edit-product" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
-                                <td><p data-placement="top" class="dlt-product" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></td>
-                            </tr>
+                                    <td>@product.Id</td>
+                                    <td>@product.Name</td>
+                                    <td>@product.Price</td>
+                                    <td>@product.Gender</td>
+                                    <td>@product.Style</td>
+                                    <td style="display:none">@product.Description</td>
+                                    <td>@product.ImagePath</td>
+                                    <td>@product.Quantity</td>
+                                    <td><p data-placement="top" class="edit-product" data-toggle="tooltip" title="Edit"><button class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></p></td>
+                                    <td><p data-placement="top" class="dlt-product" data-toggle="tooltip" title="Delete"><button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button></p></td>
+                                </tr>
                             }
                         </tbody>
 
@@ -57,28 +60,46 @@
         <div class="imgcontainer">
             <span onclick="document.getElementById('add-product').style.display='none'" class="close" title="Close Modal">&times;</span>
         </div>
-        <form class="modal-content animate" style=" background-color: #5cdb95;" id="addProductForm">
+        <form class="modal-content animate" style=" background-color: #1A212C;" id="addProductForm">
             <div class="container" style="font-family: Francois One;">
                 <div>
-                    <label for="Name" style="color: #05386b"><b>Product name</b></label>
+                    <label for="Name" style="color: #DEDBA7"><b>Product name</b></label>
                 </div>
                 <div>
                     <input type="text" placeholder="Enter Product Name" name="Name" required>
                 </div>
                 <div>
-                    <label for="Price" style="color: #05386b"><b>Product Price</b></label>
+                    <label for="Price" style="color: #DEDBA7"><b>Product Price</b></label>
                 </div>
                 <div>
                     <input type="text" placeholder="Enter Price" name="Price" required>
                 </div>
                 <div>
-                    <label for="ImagePath" style="color: #05386b"><b>Product Image</b></label>
+                    <label for="Gender" style="color: #DEDBA7"><b>Product Gender</b></label>
+                </div>
+                <div>
+                    <input type="text" placeholder="Enter Gender" name="Gender" required>
+                </div>
+                <div>
+                    <label for="Style" style="color: #DEDBA7"><b>Product Style</b></label>
+                </div>
+                <div>
+                    <input type="text" placeholder="Enter Style" name="Style" required>
+                </div>
+                <div>
+                    <label for="Description" style="color: #DEDBA7"><b>Product Description</b></label>
+                </div>
+                <div>
+                    <input type="text" placeholder="Enter Description" name="Description" required>
+                </div>
+                <div>
+                    <label for="ImagePath" style="color: #DEDBA7"><b>Product Image</b></label>
                 </div>
                 <div>
                     <input type="text" placeholder="Image Name" name="ImagePath" required>
                 </div>
                 <div>
-                    <label for="Quantity" style="color: #05386b"><b>Quantity</b></label>
+                    <label for="Quantity" style="color: #DEDBA7"><b>Quantity</b></label>
                 </div>
                 <div>
                     <input type="number" placeholder="Quantity" name="Quantity" required>
@@ -93,37 +114,55 @@
         <div class="imgcontainer">
             <span onclick="document.getElementById('edit-product').style.display='none'" class="close" title="Close Modal">&times;</span>
         </div>
-        <form class="modal-content animate" style=" background-color: #5cdb95;" id="editProductForm">
+        <form class="modal-content animate" style=" background-color: #1A212C;" id="editProductForm">
             <div class="container" style="font-family: Francois One;">
                 <div>
-                    <label for="Id" style="color: #05386b"><b>Product Id</b></label>
+                    <label for="Id" style="color: #DEDBA7"><b>Product Id</b></label>
                 </div>
                 <div>
                     <input id="editProductId" type="text" name="Id" required>
                 </div>
                 <div>
-                    <label for="Name" style="color: #05386b"><b>Product name</b></label>
+                    <label for="Name" style="color: #DEDBA7"><b>Product name</b></label>
                 </div>
                 <div>
                     <input id="editProductName" type="text" placeholder="Enter Product Name" name="Name" required>
                 </div>
                 <div>
-                    <label for="Price" style="color: #05386b"><b>Product Price</b></label>
+                    <label for="Price" style="color: #DEDBA7"><b>Product Price</b></label>
                 </div>
                 <div>
                     <input id="editProductPrice" type="text" placeholder="Enter Price" name="Price" required>
                 </div>
                 <div>
-                    <label for="ImagePath" style="color: #05386b"><b>Product Image</b></label>
+                    <label for="Gender" style="color: #DEDBA7"><b>Product Gender</b></label>
+                </div>
+                <div>
+                    <input id="editProductGender" type="text" placeholder="Enter Gender" name="Gender" required>
+                </div>
+                <div>
+                    <label for="Style" style="color: #DEDBA7"><b>Product Style</b></label>
+                </div>
+                <div>
+                    <input id="editProductStyle" type="text" placeholder="Enter Style" name="Style" required>
+                </div>
+                <div>
+                    <label for="Description" style="color: #DEDBA7"><b>Product Description</b></label>
+                </div>
+                <div>
+                    <input id="editProductDescription" type="text" placeholder="Enter Description" name="Description" required>
+                </div>
+                <div>
+                    <label for="ImagePath" style="color: #DEDBA7"><b>Product Image</b></label>
                 </div>
                 <div>
                     <input id="editProductImagePath" type="text" placeholder="Image Name" name="ImagePath" required>
                 </div>
                 <div>
-                    <label for="Quantity" style="color: #05386b"><b>Quantity</b></label>
+                    <label for="Quantity" style="color: #DEDBA7"><b>Quantity</b></label>
                 </div>
                 <div>
-                    <input  id="editProductQuantity" type="number" placeholder="Quantity" name="Quantity" required>
+                    <input id="editProductQuantity" type="number" placeholder="Quantity" name="Quantity" required>
                 </div>
                 <br />
                 <button type="button" onclick="EditProduct()" style="color: #edf5e1">Update Product</button>

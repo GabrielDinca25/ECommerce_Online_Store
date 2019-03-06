@@ -38,9 +38,9 @@
     </environment>
 
 </head>
-<body style="background-color: #5cdb95;">
+<body style="background-color: #1A212C; color: #dedba7">
     <span id="signedInUser" style="display:none;">@UserManager.GetUserName(User)</span>
-    <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #5cdb95">
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #1A212C">
         <div class="container-fluid nav-container">
             <div class="navbar-header" style="margin-right: 275px;">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -49,19 +49,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a style="color: #05386b; font-size: 38px;" asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand navbrand">
+                <a style="color: #DEDBA7; font-size: 38px;" asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand navbrand">
                     Clockwise
                 </a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-
-                    @if (SignInManager.IsSignedIn(User))
-                    {
-                        <li id="shoppingCart"><a class="navbutton" style="margin-left: -260px; color: #05386b;" asp-area="" asp-controller="ShoppingCart" asp-action="ShoppingCart"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
-                    }
-
-                    <li id="adminPanel" style="display: none"><a class="navbutton" style="margin-left: -200px; color: #05386b" asp-area="" asp-controller="Admin" asp-action="Admin"><span class="glyphicon glyphicon-cog"></span></a></li>
+                    <li id="adminPanel" style="display: none"><a class="navbutton" style="margin-left: -200px; color: #DEDBA7" asp-area="" asp-controller="Admin" asp-action="Admin"><span class="glyphicon glyphicon-cog"></span></a></li>
                     <li style="display:none" id="loggedinUser"></li>
                     @await Html.PartialAsync("_LoginPartial")
                 </ul>
@@ -76,7 +70,7 @@
 
     <div class="container-fluid body-content">
         @RenderBody()
-        @*<footer style="color: #05386b">
+        @*<footer style="color: #DEDBA7">
                 <p>&copy; 2018 - OnlineStore</p>
             </footer>*@
     </div>

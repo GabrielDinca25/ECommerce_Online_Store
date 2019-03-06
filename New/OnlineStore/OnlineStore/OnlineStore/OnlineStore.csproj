@@ -5,10 +5,6 @@
     <UserSecretsId>aspnet-OnlineStore-A03D808F-7B84-4025-90C6-914B82BB709D</UserSecretsId>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Content Remove="Views\ShoppingCart\ShoppingCart.cshtml" />
-  </ItemGroup>
-
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
@@ -23,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\ShoppingCart\ShoppingCart.cshtml" />
+    <Folder Include="Views\ShoppingCart\" />
   </ItemGroup>
 
 </Project>

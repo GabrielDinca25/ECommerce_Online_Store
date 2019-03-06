@@ -28,48 +28,6 @@ namespace OnlineStore.Controllers
         }
 
         [HttpPost]
-        [ActionName("AddToCart")]
-        public String AddToCart([FromBody]string productId)
-        {
-            try
-            {
-                var signedInUser = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-                var productToAdd = db.Products.Where(p => p.Id.Equals(productId)).FirstOrDefault();
-
-                CartProduct newCartProduct = new CartProduct(Guid.NewGuid().ToString("N").Substring(0, 7), signedInUser, productToAdd.Name, productToAdd.Price, productToAdd.ImagePath, productToAdd.Quantity);
-
-                db.CartProducts.Add(newCartProduct);
-                db.SaveChanges();
-
-                return "Success";
-            }
-            catch(Exception e)
-            {
-                return "Failure " + e.ToString();
-            }
-
-        }
-
-        [HttpPost]
-        [ActionName("DeleteAllProducts")]
-        public String DeleteAllProducts([FromBody] String val)
-        {
-            try
-            {
-                var signedInUser = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-                db.CartProducts.RemoveRange(db.CartProducts.Where(x => x.Username == signedInUser));
-                db.SaveChanges();
-
-                return "Order was placed!";
-            }
-            catch(Exception e)
-            {
-                return "Failure" + e;
-            }
-        }
-
-        [HttpPost]
         [ActionName("DeleteProduct")]
         public String DeleteProduct([FromBody] String productId)
         {

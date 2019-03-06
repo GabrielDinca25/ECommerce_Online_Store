@@ -15,34 +15,25 @@
     </ol>
     <div class="carousel-inner" role="listbox">
         <div class="item active carousel-item">
-            <span style="font-family: Francois One; font-size: 100px; color: #edf5e1; display:table;
+            <span style="font-family: Francois One; font-size: 100px; color: #dedba7; display:table;
 margin:0 auto;">GET THE LATEST OFFERS</span>
         </div>
         <div class="item carousel-item">
-            <span style="font-family: Francois One; font-size: 100px; color: #edf5e1; display:table;
+            <span style="font-family: Francois One; font-size: 100px; color: #dedba7; display:table;
 margin:0 auto;">SAVE UP TO 30%</span>
         </div>
 
         <div class="item carousel-item">
-            <span style="font-family: Francois One; font-size: 100px; color: #edf5e1; display:table;
+            <span style="font-family: Francois One; font-size: 100px; color: #dedba7; display:table;
 margin:0 auto;">ONLY FOR MEMBERS</span>
         </div>
     </div>
 </div>
 
-<div class="container">
-    <div id="imaginary_container">
-        <div style="display:block; margin-left: 400px;" class="input-group stylish-input-group">
-            <input id="homeSearchBar" class="searchbar" type="text" placeholder="Search..">
-            <button onclick="SearchProducts()">Search</button>
-        </div>
-        <div id="clearSearch" style="display:none; margin-left: 500px;">
-            <button onclick="location.reload()"><span onclick="location.reload()" class="glyphicon glyphicon-remove"> </span>Clear search</button>
-        </div>
-    </div>
+<div style="display:inline-block" class="container-fluid">
     <br />
-    <div style="display:block; margin-left: 220px;" >
-        
+    <div style="display:inline-block; margin-left: 60px;">
+
         <div style="margin-left:100px; display: inline-block">
             <label class="checkbox-inline">
                 <input type="checkbox" onclick="Filter()" name="priceRange" value="1-100">$1 - $100
@@ -61,6 +52,34 @@ margin:0 auto;">ONLY FOR MEMBERS</span>
             </label>
         </div>
     </div>
+    <div style="display:inline-block; margin-left: 0px;">
+
+        <div style="margin-left:100px; display: inline-block">
+            <label class="checkbox-inline">
+                <input type="checkbox" onclick="Filter()" name="gender" value="Men">Men
+            </label>
+            <label class="checkbox-inline">
+                <input type="checkbox" onclick="Filter()" name="gender" value="Women">Women
+            </label>
+            <label class="checkbox-inline">
+                <input type="checkbox" onclick="Filter()" name="gender" value="Unisex">Unisex
+            </label>
+        </div>
+    </div>
+    <div style="display:inline-block; margin-left: 0px;">
+
+        <div style="margin-left:100px; display: inline-block">
+            <label class="checkbox-inline">
+                <input type="checkbox" onclick="Filter()" name="style" value="Luxury">Luxury
+            </label>
+            <label class="checkbox-inline">
+                <input type="checkbox" onclick="Filter()" name="style" value="Sport">Sport
+            </label>
+            <label class="checkbox-inline">
+                <input type="checkbox" onclick="Filter()" name="style" value="Casual">Casual
+            </label>
+        </div>
+    </div>
 </div>
 
 <div class="container">
@@ -74,6 +93,7 @@ margin:0 auto;">ONLY FOR MEMBERS</span>
                     <img class="content-image" src="@product.ImagePath">
                     <div class="content-details fadeIn-bottom">
                         <h3 class="content-title">@product.Name</h3>
+                        <h4 class="content-text">"@product.Description"</h4>
                         <p class="content-text">$@product.Price</p>
 
                         @if (SignInManager.IsSignedIn(User))
@@ -87,7 +107,7 @@ margin:0 auto;">ONLY FOR MEMBERS</span>
                                 </tr>
                             </table>
                         }
-                        </div>
+                    </div>
                 </div>
             </div>
         }

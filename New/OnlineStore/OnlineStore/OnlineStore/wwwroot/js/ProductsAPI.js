@@ -147,28 +147,22 @@ $(document).ready(function () {
         var productId = $(this).closest('tr').find('td:nth-child(1)').text();
         var productName = $(this).closest('tr').find('td:nth-child(2)').text();
         var productPrice = $(this).closest('tr').find('td:nth-child(3)').text();
-        var productImagePath = $(this).closest('tr').find('td:nth-child(4)').text();
-        var productQuantity = $(this).closest('tr').find('td:nth-child(5)').text();
+        var productGender = $(this).closest('tr').find('td:nth-child(4)').text();
+        var productStyle = $(this).closest('tr').find('td:nth-child(5)').text();
+        var productDescription = $(this).closest('tr').find('td:nth-child(6)').text();
+        var productImagePath = $(this).closest('tr').find('td:nth-child(7)').text();
+        var productQuantity = $(this).closest('tr').find('td:nth-child(8)').text();
 
         document.getElementById("editProductId").value = productId.toString();
         document.getElementById("editProductName").value = productName.toString();
         document.getElementById("editProductPrice").value = productPrice.toString();
+        document.getElementById("editProductGender").value = productGender.toString();
+        document.getElementById("editProductStyle").value = productStyle.toString();
+        document.getElementById("editProductDescription").value = productDescription.toString();
         document.getElementById("editProductImagePath").value = productImagePath.toString();
         document.getElementById("editProductQuantity").value = productQuantity.toString();
 
         document.getElementById('edit-product').style.display = 'block';
-    });
-    $('.add-to-cart').click(function () {
-        var productId = $(this).closest('tr').find('td:nth-child(1)').text();
-
-        server_address = 'https://localhost:44390/api/ShoppingCart/AddToCart';
-
-        result = makeTextPostRequest(productId, server_address);
-        result.done(function (response) {
-            if (response == "Success") {
-                alert(response);
-            }
-        });
     });
     $('.dlt-cart-product').click(function () {
         var productId = $(this).closest('tr').find('td:nth-child(1)').text();
@@ -199,16 +193,33 @@ function Filter() {
         return e.value;
     });
 
+    var genders = $.map($('input:checkbox[name=gender]:checked'), function (e, i) {
+        return e.value;
+    });
+
+    var styles = $.map($('input:checkbox[name=style]:checked'), function (e, i) {
+        return e.value;
+    });
+
     server_address = 'https://localhost:44390/api/Products/ReturnProducts';
 
     result = makeTextPostRequest("", server_address);
     result.done(function (response) {
-        if (prices.length) {
+        if (prices.length || genders.length || styles.length) {
             $("#productRow").html("");
             var noResults = true;
             for (var i = 0; i < response.length; i++) {
                 var eligible = true;
-
+                genders.forEach(function (gender) {
+                    if (response[i].gender != gender) {
+                        eligible = false;
+                    }
+                });
+                styles.forEach(function (style) {
+                    if (response[i].style != style) {
+                        eligible = false;
+                    }
+                });
                 var currentPrice = parseFloat(response[i].price)
                 prices.forEach(function (pricerange) {
                     var range = pricerange.split('-');
