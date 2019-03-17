@@ -119,7 +119,6 @@ function Checkout() {
     result = makeTextPostRequest("", server_address);
     result.done(function (response) {
         location.reload();
-
     });
 }
 
@@ -164,6 +163,18 @@ $(document).ready(function () {
 
         document.getElementById('edit-product').style.display = 'block';
     });
+    $('.add-to-cart').click(function () {
+        var productId = $(this).closest('tr').find('td:nth-child(1)').text();
+
+        server_address = 'https://localhost:44390/api/ShoppingCart/AddToCart';
+
+        result = makeTextPostRequest(productId, server_address);
+        result.done(function (response) {
+            if (response == "Success") {
+                alert(response);
+            }
+        });
+    });
     $('.dlt-cart-product').click(function () {
         var productId = $(this).closest('tr').find('td:nth-child(1)').text();
 
@@ -178,6 +189,26 @@ $(document).ready(function () {
                 alert(response);
             }
         });
+    });
+
+    $('.updt-quantity').on("change keyup", function () {
+        var productQuantity = $(this).val();
+        var productId = $(this).closest('tr').find('td:nth-child(1)').text();
+        
+        server_address = 'https://localhost:44390/api/ShoppingCart/UpdateQuantity';
+
+        productIdAndQuantity = productId + '-' + productQuantity.toString();
+
+        result = makeTextPostRequest(productIdAndQuantity, server_address);
+        result.done(function (response) {
+            if (response == "Success") {
+                location.reload();
+            }
+            else {
+                alert(response);
+            }
+        });
+
     });
 
     var signedInUser = document.getElementById("signedInUser").innerHTML;

@@ -1,13 +1,9 @@
 ﻿@{
 ViewData["Title"] = "Home Page";
-
-var counter = 0;
 }
 
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
-
-
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
@@ -34,7 +30,6 @@ margin:0 auto;">ONLY FOR MEMBERS</span>
 
 
 <div style="display:inline-block" class="container-fluid">
-
     <br />
     <div style="display:inline-block; margin-left: 60px;">
 
@@ -87,7 +82,6 @@ margin:0 auto;">ONLY FOR MEMBERS</span>
 </div>
 
 <div class="container">
-
     <div id="productRow" class="row product-row">
         @foreach (var product in ViewBag.Products)
         {
@@ -116,9 +110,9 @@ margin:0 auto;">ONLY FOR MEMBERS</span>
             </div>
         }
     </div>
-    <audio style="display:none" controls autoplay>
+    @*<audio style="display:none" controls autoplay>
         <source src="~/audio/tickingclock.mp3" type="audio/mpeg">
-    </audio>
+    </audio>*@
 
 </div>
 

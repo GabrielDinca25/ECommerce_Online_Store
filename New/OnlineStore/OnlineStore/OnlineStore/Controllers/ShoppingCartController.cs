@@ -28,6 +28,70 @@ namespace OnlineStore.Controllers
         }
 
         [HttpPost]
+        [ActionName("AddToCart")]
+        public String AddToCart([FromBody]string productId)
+        {
+            try
+            {
+                var productToUpdate = db.CartProducts.Where(p => p.ProdId.Equals(productId)).FirstOrDefault();
+
+                if(productToUpdate != null)
+                {
+                    int intQuantity;
+                    Int32.TryParse(productToUpdate.Quantity, out intQuantity);
+                    intQuantity += 1;
+
+                    productToUpdate.Quantity = intQuantity.ToString();
+
+                    int intPrice;
+                    Int32.TryParse(productToUpdate.Price, out intPrice);
+
+                    int totalPrice = intPrice + (intPrice/(intQuantity - 1));
+
+                    productToUpdate.Price = totalPrice.ToString();
+
+                    db.SaveChanges();
+                }
+                else
+                {
+                    var signedInUser = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+                    var productToAdd = db.Products.Where(p => p.Id.Equals(productId)).FirstOrDefault();
+
+                    CartProduct newCartProduct = new CartProduct(Guid.NewGuid().ToString("N").Substring(0, 7), productId, signedInUser, productToAdd.Name, productToAdd.Price, productToAdd.ImagePath, productToAdd.Quantity);
+
+                    db.CartProducts.Add(newCartProduct);
+                    db.SaveChanges();
+                }
+
+                return "Success";
+            }
+            catch (Exception e)
+            {
+                return "Failure " + e.ToString();
+            }
+
+        }
+
+        [HttpPost]
+        [ActionName("DeleteAllProducts")]
+        public String DeleteAllProducts([FromBody] String val)
+        {
+            try
+            {
+                var signedInUser = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                db.CartProducts.RemoveRange(db.CartProducts.Where(x => x.Username == signedInUser));
+                db.SaveChanges();
+
+                return "Order was placed!";
+            }
+            catch (Exception e)
+            {
+                return "Failure" + e;
+            }
+        }
+
+        [HttpPost]
         [ActionName("DeleteProduct")]
         public String DeleteProduct([FromBody] String productId)
         {
@@ -36,6 +100,41 @@ namespace OnlineStore.Controllers
             try
             {
                 db.CartProducts.Remove(productToRemove);
+                db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                return "Failure";
+            }
+
+            return "Success";
+        }
+
+        [HttpPost]
+        [ActionName("UpdateQuantity")]
+        public String UpdateQuantity([FromBody] String productIdAndQuantity)
+        {
+            string[] elements = productIdAndQuantity.Split('-');
+
+            var productToUpdate = db.CartProducts.Where(p => p.Id.Equals(elements[0])).FirstOrDefault();
+
+            try
+            {
+                int intOriginalQuantity;
+                Int32.TryParse(productToUpdate.Quantity, out intOriginalQuantity);
+
+                productToUpdate.Quantity = elements[1];
+
+                int intQuantity;
+                Int32.TryParse(productToUpdate.Quantity, out intQuantity);
+
+                int intPrice;
+                Int32.TryParse(productToUpdate.Price, out intPrice);
+
+                int totalPrice = (intPrice / (intOriginalQuantity)) * intQuantity;
+
+                productToUpdate.Price = totalPrice.ToString();
+
                 db.SaveChanges();
             }
             catch (Exception e)

@@ -7,9 +7,10 @@ namespace OnlineStore.Models.Product
     {
         public CartProduct() { }
 
-        public CartProduct(string id, string username, string name, string price, string image, string quantity)
+        public CartProduct(string id, string prodId, string username, string name, string price, string image, string quantity)
         {
             Id = id;
+            ProdId = prodId;
             Username = username;
             Name = name;
             Price = price;
@@ -19,6 +20,7 @@ namespace OnlineStore.Models.Product
 
         [Key]
         public String Id { get; set; }
+        public String ProdId { get; set; }
         public String Username { get; set; }
         public String Name { get; set; }
         public String Price { get; set; }
