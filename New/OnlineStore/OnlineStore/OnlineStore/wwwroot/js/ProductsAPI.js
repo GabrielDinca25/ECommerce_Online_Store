@@ -122,7 +122,9 @@ function Checkout() {
     });
 }
 
+
 $(document).ready(function () {
+
 
     $('.dlt-product').click(function () {
         {
@@ -170,9 +172,7 @@ $(document).ready(function () {
 
         result = makeTextPostRequest(productId, server_address);
         result.done(function (response) {
-            if (response == "Success") {
-                alert(response);
-            }
+            alert(response);
         });
     });
     $('.dlt-cart-product').click(function () {
@@ -190,7 +190,6 @@ $(document).ready(function () {
             }
         });
     });
-
     $('.updt-quantity').on("change keyup", function () {
         var productQuantity = $(this).val();
         var productId = $(this).closest('tr').find('td:nth-child(1)').text();

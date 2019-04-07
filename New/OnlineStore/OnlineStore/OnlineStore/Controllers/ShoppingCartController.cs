@@ -37,9 +37,20 @@ namespace OnlineStore.Controllers
 
                 if(productToUpdate != null)
                 {
+                    var originalProduct = db.Products.Where(p => p.Id.Equals(productId)).FirstOrDefault();
+
+                    int originalQuantity;
+                    Int32.TryParse(originalProduct.Quantity, out originalQuantity);
+
+
                     int intQuantity;
                     Int32.TryParse(productToUpdate.Quantity, out intQuantity);
                     intQuantity += 1;
+
+                    if(intQuantity > originalQuantity)
+                    {
+                        return "Not enough in stock";
+                    }
 
                     productToUpdate.Quantity = intQuantity.ToString();
 
@@ -58,7 +69,7 @@ namespace OnlineStore.Controllers
 
                     var productToAdd = db.Products.Where(p => p.Id.Equals(productId)).FirstOrDefault();
 
-                    CartProduct newCartProduct = new CartProduct(Guid.NewGuid().ToString("N").Substring(0, 7), productId, signedInUser, productToAdd.Name, productToAdd.Price, productToAdd.ImagePath, productToAdd.Quantity);
+                    CartProduct newCartProduct = new CartProduct(Guid.NewGuid().ToString("N").Substring(0, 7), productId, signedInUser, productToAdd.Name, productToAdd.Price, productToAdd.ImagePath, "1");
 
                     db.CartProducts.Add(newCartProduct);
                     db.SaveChanges();
@@ -116,7 +127,24 @@ namespace OnlineStore.Controllers
         {
             string[] elements = productIdAndQuantity.Split('-');
 
+            int quantity;
+            Int32.TryParse(elements[1], out quantity);
+
             var productToUpdate = db.CartProducts.Where(p => p.Id.Equals(elements[0])).FirstOrDefault();
+
+            var originalProduct = db.Products.Where(p => p.Id.Equals(productToUpdate.ProdId)).FirstOrDefault();
+
+            if(originalProduct != null)
+            {
+                int originalProductQuantity;
+
+                Int32.TryParse(originalProduct.Quantity, out originalProductQuantity);
+
+                if(originalProductQuantity < quantity)
+                {
+                    return "Not enough in stock";
+                }
+            }
 
             try
             {
