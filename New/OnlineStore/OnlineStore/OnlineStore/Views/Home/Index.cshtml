@@ -1,5 +1,5 @@
 ﻿@{
-ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home Page";
 }
 
 @inject SignInManager<ApplicationUser> SignInManager
@@ -95,40 +95,47 @@ margin:0 auto;">ONLY FOR MEMBERS</span>
     </div>
 </div>
 
-    <div class="container">
-        <div id="productRow" class="row product-row">
-            @foreach (var product in ViewBag.Products)
-            {
-                <div style="margin-top: 30px;" class="col-md-4">
-                    <div class="content">
-                        <div class="content-overlay"></div>
-                        <img class="content-image" src="@product.ImagePath">
-                        <div class="content-details fadeIn-bottom">
-                            <h3 class="content-title">@product.Name</h3>
-                            <h4 class="content-text">"@product.Description"</h4>
-                            <p class="content-text">$@product.Price</p>
+@*<form autocomplete="off" action="/action_page.php">
+  <div class="autocomplete" style="width:300px;">
+    <input id="myInput" type="text" name="myCountry" placeholder="Country">
+  </div>
+  <input type="submit">
+</form>*@
 
-                            @if (SignInManager.IsSignedIn(User))
-                            {
-                                <table style="width: 100%">
-                                    <tr>
-                                        <td style="display: none">@product.Id</td>
-                                        <td>
-                                            <button class="add-to-cart" style="color: #edf5e1">Add to Cart</button>
-                                        </td>
-                                    </tr>
-                                </table>
-                            }
-                        </div>
+<div class="container">
+    <div id="productRow" class="row product-row">
+        @foreach (var product in ViewBag.Products)
+        {
+            <div style="margin-top: 30px;" class="col-md-4">
+                <div class="content">
+                    <div class="content-overlay"></div>
+                    <img class="content-image" src="@product.ImagePath">
+                    <div class="content-details fadeIn-bottom">
+                        <h3 class="content-title">@product.Name</h3>
+                        <h4 class="content-text">"@product.Description"</h4>
+                        <p class="content-text">$@product.Price</p>
+
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            <table style="width: 100%">
+                                <tr>
+                                    <td style="display: none">@product.Id</td>
+                                    <td>
+                                        <button class="add-to-cart" style="color: #edf5e1">Add to Cart</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        }
                     </div>
                 </div>
-            }
-        </div>
-        @*<audio style="display:none" controls autoplay>
-                <source src="~/audio/tickingclock.mp3" type="audio/mpeg">
-            </audio>*@
-
+            </div>
+        }
     </div>
+    @*<audio style="display:none" controls autoplay>
+            <source src="~/audio/tickingclock.mp3" type="audio/mpeg">
+        </audio>*@
+
+</div>
 
 
 

@@ -127,5 +127,13 @@ namespace OnlineStore.Controllers
             return "Success";
 
         }
+
+        [HttpPost]
+        [ActionName("Search")]
+        public List<String> Search([FromBody]string t)
+        {
+            var names = db.Products.Select(p => p.Name).ToList();
+            return names;
+        }
     }
 }
